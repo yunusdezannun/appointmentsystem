@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Set;
+
 import javax.persistence.*;
 
 @Entity
@@ -15,11 +17,10 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class Student {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "student_id_seq")
-
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "student_id")
-    private Long id;
-
+    private Long student_id;
+    
     @Column(name = "firstName", nullable = false)
     private String firstName;
 
@@ -35,8 +36,10 @@ public class Student {
     @Column(name = "mobile", nullable = false)
     private String mobile;
 
-
     @Column(name = "password", nullable = true)
     private String password;
+    
+    @OneToMany(mappedBy = "studentCase")
+    private Set<Case> cases;
 
 }

@@ -23,7 +23,7 @@ public class StaffController {
 
     public ResponseEntity<?> newStaff (@RequestBody Staff staff) {
         try{
-            return new ResponseEntity<Student>(this.staffService.newStudent(staff), HttpStatus.OK);
+            return new ResponseEntity<Staff>(this.staffService.newStaff(staff), HttpStatus.OK);
         }
         catch (RuntimeException ex){
             return new ResponseEntity<String>(ex.getMessage(), HttpStatus.CONFLICT );
